@@ -3,7 +3,7 @@ FROM php:7.0-apache
 RUN a2enmod rewrite && a2enmod headers
 
 RUN { \
-		echo 'deb http://packages.dotdeb.org jessie all' \
+		echo 'deb http://packages.dotdeb.org jessie all'; \
 	} >> /etc/apt/sources.list
 
 # install the PHP extensions we need
