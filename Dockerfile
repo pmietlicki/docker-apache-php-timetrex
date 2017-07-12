@@ -21,6 +21,13 @@ RUN docker-php-ext-configure gd --with-png-dir=/usr --with-freetype-dir=/usr/inc
 ADD https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip /tmp/timetrex.zip
 RUN if $UPDATE -eq "true"; then unzip -f /tmp/timetrex.zip -d /var/www/html; fi
 
+RUN mkdir -p /var/timetrex/storage
+RUN mkdir /var/log/timetrex
+RUN chgrp -R www-data /var/timetrex/
+RUN chmod 775 -R /var/timetrex
+RUN chgrp www-data /var/log/timetrex/
+RUN chmod 775 /var/log/timetrex
+
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
 RUN { \
