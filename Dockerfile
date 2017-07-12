@@ -27,6 +27,7 @@ RUN chgrp -R www-data /var/timetrex/
 RUN chmod 775 -R /var/timetrex
 RUN chgrp www-data /var/log/timetrex/
 RUN chmod 775 /var/log/timetrex
+RUN chgrp www-data -R /var/www/html
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
