@@ -6,7 +6,7 @@ RUN { \
 		echo 'deb http://packages.dotdeb.org jessie all'; \
 	} >> /etc/apt/sources.list
 	
-ENV UPDATE true
+ENV UPGRADE true
 
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y --force-yes locales git-core libldb-dev libxslt1.1 libxslt-dev libldap2-dev libcurl4-gnutls-dev libxml2-dev libc-client-dev libkrb5-dev php7.0-cgi php7.0-cli php7.0-pgsql php7.0-pspell php7.0-gd php7.0-gettext php7.0-imap php7.0-intl php7.0-json php7.0-soap php7.0-zip php7.0-mcrypt php7.0-curl php7.0-ldap php7.0-xml php7.0-xsl php7.0-mbstring php7.0-bcmath vim libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libpq-dev libexif-dev libmcrypt-dev libpng12-dev libjpeg-dev && rm -rf /var/lib/apt/lists/*
@@ -19,7 +19,7 @@ RUN docker-php-ext-configure gd --with-png-dir=/usr --with-freetype-dir=/usr/inc
         && docker-php-ext-install gd mysqli calendar mcrypt gettext intl exif zip mbstring gettext imap intl json soap curl ldap xml xsl bcmath pdo pdo_mysql pdo_sqlite pdo_pgsql json
 
 ADD https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip /tmp/timetrex.zip
-RUN if ${UPDATE} -eq true; then unzip -f /tmp/timetrex.zip -d /var/www/html; fi
+RUN if ${UPGRADE} -eq "true"; then unzip -f /tmp/timetrex.zip -d /var/www/html; fi
 
 RUN mkdir -p /var/timetrex/storage
 RUN mkdir /var/log/timetrex
