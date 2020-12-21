@@ -1,5 +1,7 @@
 FROM debian:buster
 
+RUN apt-get update && apt-get install -y --force-yes apache2
+
 RUN a2enmod rewrite && a2enmod headers
 
 RUN { \
