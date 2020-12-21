@@ -9,7 +9,8 @@ RUN { \
 ENV UPGRADE true
 
 # install the PHP extensions we need
-apt-get update && apt-get install -y --force-yes locales git libldb-dev unzip libxslt1.1 libxslt1-dev libldap2-dev libcurl4-gnutls-dev libxml2-dev libc-client-dev libkrb5-dev php7.3-cgi php7.3-cli php7.3-pgsql php7.3-pspell php7.3-gd php7.3-imap php7.3-intl php7.3-json php7.3-soap php7.3-zip php7.3-curl php7.3-ldap php7.3-xml php7.3-xsl php7.3-mbstring php7.3-bcmath vim libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpq-dev libexif-dev libmcrypt-dev libjpeg-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --force-yes locales git libldb-dev unzip libxslt1.1 libxslt1-dev libldap2-dev libcurl4-gnutls-dev libxml2-dev libc-client-dev libkrb5-dev php7.3-cgi php7.3-cli php7.3-pgsql php7.3-pspell php7.3-gd php7.3-imap php7.3-intl php7.3-json php7.3-soap php7.3-zip php7.3-curl php7.3-ldap php7.3-xml php7.3-xsl php7.3-mbstring php7.3-bcmath vim libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpq-dev libexif-dev libmcrypt-dev libjpeg-dev && rm -rf /var/lib/apt/lists/*
+
 RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so \
 && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
 
