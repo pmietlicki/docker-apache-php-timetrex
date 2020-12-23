@@ -12,9 +12,7 @@ RUN apt-get update && apt-get install -y --force-yes locales git libldb-dev unzi
 RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so \
 && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
 
-RUN docker-php-ext-configure gd --with-png-dir=/usr --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include \
-        && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-        && docker-php-ext-install gd mysqli calendar mcrypt gettext intl exif zip mbstring imap intl json soap curl ldap xml xsl bcmath pdo pdo_mysql pdo_sqlite pdo_pgsql json
+RUN docker-php-ext-install gd imap mysqli calendar mcrypt gettext intl exif zip mbstring imap intl json soap curl ldap xml xsl bcmath pdo pdo_mysql pdo_sqlite pdo_pgsql json
 
 ADD https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip /tmp/timetrex.zip
 RUN if ${UPGRADE} -eq "true"; then unzip -f /tmp/timetrex.zip -d /var/www/html; fi
