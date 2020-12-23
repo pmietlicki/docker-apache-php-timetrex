@@ -16,8 +16,6 @@ RUN docker-php-ext-configure gd --with-png-dir=/usr --with-freetype-dir=/usr/inc
         && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
         && docker-php-ext-install gd mysqli calendar mcrypt gettext intl exif zip mbstring imap intl json soap curl ldap xml xsl bcmath pdo pdo_mysql pdo_sqlite pdo_pgsql json
 
-RUN apt-get install -y --force-yes apache2
-
 ADD https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip /tmp/timetrex.zip
 RUN if ${UPGRADE} -eq "true"; then unzip -f /tmp/timetrex.zip -d /var/www/html; fi
 
